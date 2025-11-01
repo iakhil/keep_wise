@@ -177,7 +177,7 @@ async function createSummarizer(options) {
 		monitor(m) {
 			m.addEventListener('downloadprogress', (e) => {
 				const pct = Math.round((e.loaded || 0) * 100);
-				setProgress(`Generating summary… ${pct}%`);
+				setProgress(`Generating summary…`);
 			});
 		}
 	});
