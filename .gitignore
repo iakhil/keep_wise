@@ -9,4 +9,7 @@ notes.db-journal
 extension-pack/*
 !extension-pack/README.md
 keepwise-extension.zip
+firebase-service-account.json
+*-firebase-adminsdk-*.json
+server-sqlite-backup.js
 
