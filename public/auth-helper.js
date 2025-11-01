@@ -45,6 +45,7 @@ if (auth && isExtensionContext) {
   }, 50 * 60 * 1000); // Refresh every 50 minutes
 } else if (auth) {
   // Running in regular browser (not extension context)
-  console.log('Extension storage not available - auth tokens will not be synced to extension');
+  // This is expected - the website doesn't need to sync tokens to extension
+  // console.log('Extension storage not available - auth tokens will not be synced to extension');
 }
 
