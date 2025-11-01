@@ -121,11 +121,16 @@ See [BUILD_EXTENSION.md](BUILD_EXTENSION.md) for detailed packaging and distribu
 
 For complete deployment guides, see [DEPLOYMENT.md](DEPLOYMENT.md) (Render, Railway, Fly.io, or VPS).
 
+## Documentation
+
+- **[TECHNICAL_ARCHITECTURE.md](TECHNICAL_ARCHITECTURE.md)** - Comprehensive technical overview
+- **[CHALLENGES_AND_SOLUTIONS.md](CHALLENGES_AND_SOLUTIONS.md)** - Challenges encountered and solutions
+
 ## Technologies Used
 
 - **Chrome Extension API**: Manifest V3, Summarizer API
 - **Backend**: Node.js, Express.js
-- **Database**: SQLite (better-sqlite3)
+- **Database**: Firebase Firestore
 - **Authentication**: Firebase Auth (Email/Password, Google)
 - **Frontend**: Vanilla JavaScript, HTML, CSS
 
