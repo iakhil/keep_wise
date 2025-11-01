@@ -1,0 +1,9 @@
+node_modules/
+*.db
+*.log
+.DS_Store
+.env
+firebase-admin-init.js
+firebase-config.js
+notes.db-journal
+
