@@ -1,6 +1,6 @@
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, onAuthStateChanged, signInWithPopup, GoogleAuthProvider } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js';
 
-const API_BASE = 'http://localhost:3000/api';
+const API_BASE = 'https://keep-wise.onrender.com/api';
 const auth = window.firebaseAuth;
 
 let notes = [];
@@ -124,7 +124,7 @@ async function fetchNotes() {
     }
   } catch (error) {
     console.error('Error fetching notes:', error);
-    showError('Unable to connect to server. Make sure the server is running on http://localhost:3000');
+    showError('Unable to connect to server. Make sure the server is running on https://keep-wise.onrender.com');
   }
 }
 

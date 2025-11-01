@@ -86,7 +86,7 @@ async function saveNote() {
 			headers['Authorization'] = `Bearer ${authToken}`;
 		}
 		
-		const response = await fetch('http://localhost:3000/api/notes', {
+		const response = await fetch('https://keep-wise.onrender.com/api/notes', {
 			method: 'POST',
 			headers,
 			body: JSON.stringify({
@@ -99,16 +99,16 @@ async function saveNote() {
 		const data = await response.json();
 		
 		if (response.status === 401 || response.status === 403) {
-			setSaveStatus('❌ Please sign in at http://localhost:3000 to save notes', false);
+			setSaveStatus('❌ Please sign in at https://keep-wise.onrender.com to save notes', false);
 		} else if (data.success) {
-			setSaveStatus('✅ Note saved successfully! You can view it at http://localhost:3000', true);
+			setSaveStatus('✅ Note saved successfully! You can view it at https://keep-wise.onrender.com', true);
 			setTimeout(() => setSaveStatus(''), 5000);
 		} else {
 			setSaveStatus('❌ Failed to save note', false);
 		}
 	} catch (error) {
 		console.error('Error saving note:', error);
-		setSaveStatus('Unable to connect to server. Make sure it\'s running on http://localhost:3000', false);
+		setSaveStatus('Unable to connect to server. Make sure it\'s running on https://keep-wise.onrender.com', false);
 	}
 }
 
