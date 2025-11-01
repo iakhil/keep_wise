@@ -39,6 +39,22 @@ NODE_ENV=production
 2. Wait 2-5 minutes for deployment
 3. Get your URL: `https://keepwise-server.onrender.com`
 
+## Step 4.5: Authorize Your Domain in Firebase (IMPORTANT!)
+
+**This is required for Google Sign-In to work!**
+
+After deployment, you need to add your Render domain to Firebase:
+
+1. Go to [Firebase Console](https://console.firebase.google.com)
+2. Select your project
+3. Click **Authentication** → **Settings**
+4. Scroll to **"Authorized domains"**
+5. Click **"Add domain"**
+6. Enter: `keepwise-server.onrender.com` (your actual Render URL)
+7. Click **"Add"**
+
+**See [FIREBASE_AUTHORIZED_DOMAINS.md](FIREBASE_AUTHORIZED_DOMAINS.md) for detailed instructions.**
+
 ## Step 5: Update Extension (IMPORTANT!)
 
 Once deployed, you need to update your Chrome extension to use the production URL:
