@@ -99,17 +99,9 @@ All endpoints require Firebase authentication (unless running without Firebase):
 
 ## Deployment
 
-Quick deploy to Render:
+**🚀 Quick Deploy to Render**: See [QUICK_DEPLOY.md](QUICK_DEPLOY.md) for step-by-step instructions.
 
-```bash
-# Push to GitHub
-git push origin main
-
-# Follow deployment instructions
-# See DEPLOYMENT.md for detailed guide
-```
-
-Or see [DEPLOYMENT.md](DEPLOYMENT.md) for complete deployment instructions for Render, Railway, Fly.io, or VPS.
+For complete deployment guides, see [DEPLOYMENT.md](DEPLOYMENT.md) (Render, Railway, Fly.io, or VPS).
 
 ## Technologies Used
 
