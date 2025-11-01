@@ -78,6 +78,8 @@ For power users, open Chrome DevTools → "KeepWise" tab to access additional fe
 
 ## Architecture
 
+**📖 [See TECHNICAL_ARCHITECTURE.md for comprehensive technical details](TECHNICAL_ARCHITECTURE.md)**
+
 ```
 KeepWise/
 ├── popup.html          # Extension popup UI
