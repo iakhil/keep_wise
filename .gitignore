@@ -6,4 +6,7 @@ node_modules/
 firebase-admin-init.js
 firebase-config.js
 notes.db-journal
+extension-pack/*
+!extension-pack/README.md
+keepwise-extension.zip
 
