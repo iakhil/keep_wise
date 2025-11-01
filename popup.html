@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>KeepWise</title>
+	<link rel="stylesheet" href="popup.css">
+</head>
+<body>
+	<div class="container">
+		<div class="header-logo">
+			<img src="logo.png" alt="KeepWise" class="logo-img">
+			<h1>KeepWise</h1>
+		</div>
+		<div class="controls">
+			<label>
+				Type
+				<select id="type">
+					<option value="key-points" selected>Key points</option>
+					<option value="tldr">TL;DR</option>
+					<option value="teaser">Teaser</option>
+					<option value="headline">Headline</option>
+				</select>
+			</label>
+			<label>
+				Length
+				<select id="length">
+					<option value="short">Short</option>
+					<option value="medium" selected>Medium</option>
+					<option value="long">Long</option>
+				</select>
+			</label>
+			<label>
+				Format
+				<select id="format">
+					<option value="markdown" selected>Markdown</option>
+					<option value="plain-text">Plain text</option>
+				</select>
+			</label>
+		</div>
+		<textarea id="input" placeholder="Selected text will appear here" rows="8"></textarea>
+		<div class="button-group">
+			<button id="summarizeBtn">✨ Summarize</button>
+			<button id="saveBtn" class="save-btn" disabled>💾 Save Note</button>
+		</div>
+		<div id="progress" class="progress"></div>
+		<div id="output" class="output"></div>
+		<div id="saveStatus" class="save-status"></div>
+	</div>
+	<script src="popup.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,225 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Summarize Panel</title>
+	<style>
+		* {
+			box-sizing: border-box;
+		}
+		body {
+			font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+			margin: 0;
+			background: #f5f7fa;
+		}
+		.container {
+			padding: 24px;
+			max-width: 800px;
+			margin: 0 auto;
+		}
+		h2 {
+			margin: 0 0 20px;
+			font-size: 28px;
+			font-weight: 700;
+			background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+			background-clip: text;
+			letter-spacing: -0.5px;
+		}
+		.status {
+			font-size: 13px;
+			margin-bottom: 20px;
+			padding: 10px 12px;
+			border-radius: 8px;
+			background: #f8f9fa;
+			border-left: 3px solid #667eea;
+			font-weight: 500;
+			transition: all 0.2s ease;
+		}
+		.status[style*="#b00020"] {
+			background: #fee;
+			border-left-color: #dc3545;
+			color: #721c24;
+		}
+		.controls {
+			display: grid;
+			grid-template-columns: repeat(3, 1fr);
+			gap: 16px;
+			margin-bottom: 20px;
+		}
+		label {
+			display: flex;
+			flex-direction: column;
+			gap: 6px;
+			font-size: 12px;
+			font-weight: 600;
+			color: #495057;
+			text-transform: uppercase;
+			letter-spacing: 0.5px;
+		}
+		select {
+			padding: 10px 12px;
+			font-size: 14px;
+			border: 2px solid #e9ecef;
+			border-radius: 8px;
+			background: #ffffff;
+			color: #212529;
+			font-family: inherit;
+			transition: all 0.2s ease;
+			cursor: pointer;
+		}
+		select:hover {
+			border-color: #667eea;
+		}
+		select:focus {
+			outline: none;
+			border-color: #667eea;
+			box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+		}
+		.button-group {
+			display: flex;
+			gap: 12px;
+			margin-bottom: 20px;
+		}
+		button {
+			padding: 12px 20px;
+			font-size: 14px;
+			font-weight: 600;
+			border: none;
+			border-radius: 8px;
+			cursor: pointer;
+			transition: all 0.3s ease;
+			letter-spacing: 0.3px;
+		}
+		#grabSelection {
+			background: #ffffff;
+			color: #667eea;
+			border: 2px solid #667eea;
+			flex: 1;
+		}
+		#grabSelection:hover {
+			background: #f0f4ff;
+			transform: translateY(-2px);
+			box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+		}
+		#summarizeBtn {
+			background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+			color: #ffffff;
+			flex: 1;
+			box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+		}
+		#summarizeBtn:hover {
+			transform: translateY(-2px);
+			box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
+		}
+		#summarizeBtn:active, #grabSelection:active {
+			transform: translateY(0);
+		}
+		#input {
+			width: 100%;
+			padding: 12px;
+			font-size: 14px;
+			border: 2px solid #e9ecef;
+			border-radius: 8px;
+			resize: vertical;
+			min-height: 140px;
+			font-family: inherit;
+			line-height: 1.5;
+			transition: all 0.2s ease;
+			background: #ffffff;
+			color: #212529;
+			margin-bottom: 16px;
+		}
+		#input:focus {
+			outline: none;
+			border-color: #667eea;
+			box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+		}
+		#input::placeholder {
+			color: #adb5bd;
+		}
+		#progress {
+			font-size: 13px;
+			color: #667eea;
+			font-weight: 500;
+			padding: 10px 12px;
+			background: #f0f4ff;
+			border-radius: 8px;
+			text-align: center;
+			margin-bottom: 16px;
+			animation: pulse 2s ease-in-out infinite;
+		}
+		@keyframes pulse {
+			0%, 100% {
+				opacity: 1;
+			}
+			50% {
+				opacity: 0.7;
+			}
+		}
+		#output {
+			margin-top: 20px;
+			padding: 16px;
+			background: #ffffff;
+			border-radius: 8px;
+			font-size: 14px;
+			line-height: 1.6;
+			white-space: pre-wrap;
+			color: #212529;
+			border: 2px solid #e9ecef;
+			min-height: 80px;
+			box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+		}
+		#output:empty {
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<h2>✨ Summarize Selection</h2>
+		<div id="envStatus" class="status"></div>
+		<div class="controls">
+			<label>
+				Type
+				<select id="type">
+					<option value="key-points" selected>Key points</option>
+					<option value="tldr">TL;DR</option>
+					<option value="teaser">Teaser</option>
+					<option value="headline">Headline</option>
+				</select>
+			</label>
+			<label>
+				Length
+				<select id="length">
+					<option value="short">Short</option>
+					<option value="medium" selected>Medium</option>
+					<option value="long">Long</option>
+				</select>
+			</label>
+			<label>
+				Format
+				<select id="format">
+					<option value="markdown" selected>Markdown</option>
+					<option value="plain-text">Plain text</option>
+				</select>
+			</label>
+		</div>
+		<div class="button-group">
+			<button id="grabSelection">📋 Use Selection</button>
+			<button id="summarizeBtn">✨ Summarize</button>
+		</div>
+		<textarea id="input" placeholder="Selection or custom text..."></textarea>
+		<div style="margin-top: 12px;">
+			<button id="saveBtn" style="width: 100%; background: #28a745; box-shadow: 0 4px 12px rgba(40, 167, 69, 0.4);" disabled>💾 Save Note</button>
+		</div>
+		<div id="progress" class="status"></div>
+		<div id="output"></div>
+		<div id="saveStatus" style="margin-top: 12px; padding: 10px 12px; border-radius: 8px; font-size: 13px; font-weight: 500; text-align: center; display: none;"></div>
+	</div>
+	<script src="panel.js"></script>
+</body>
+</html>
+
