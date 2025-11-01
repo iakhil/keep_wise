@@ -15,12 +15,22 @@ A Chrome extension that uses Chrome's built-in Summarizer API (Gemini Nano) to s
 
 ## Quick Start
 
-### Installation
+### Option 1: Use Pre-packaged Extension (Recommended)
+
+1. **Download**: Get `keepwise-extension.zip` from [Releases](https://github.com/iakhil/keep_wise/releases) or build your own with `./build-extension.sh`
+2. **Extract** the ZIP file
+3. **Install**: 
+   - Go to `chrome://extensions/`
+   - Enable "Developer mode"
+   - Click "Load unpacked"
+   - Select the extracted folder
+
+### Option 2: Build from Source
 
 1. Clone this repository:
 ```bash
-git clone https://github.com/YOUR_USERNAME/keepwise.git
-cd keepwise
+git clone https://github.com/iakhil/keep_wise.git
+cd keep_wise
 ```
 
 2. Install dependencies:
@@ -96,6 +106,12 @@ All endpoints require Firebase authentication (unless running without Firebase):
 - `GET /api/notes` - Get all user's notes
 - `GET /api/notes/:id` - Get a specific note
 - `DELETE /api/notes/:id` - Delete a note
+
+## Packaging Extension
+
+**📦 Build Extension**: Run `./build-extension.sh` to create `keepwise-extension.zip` for distribution.
+
+See [BUILD_EXTENSION.md](BUILD_EXTENSION.md) for detailed packaging and distribution instructions.
 
 ## Deployment
 
